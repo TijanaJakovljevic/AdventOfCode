@@ -26,32 +26,5 @@ namespace Captcha
 			}
 			return _sum;
 		}
-
-		public int Calculate1()
-		{
-			for (var i = 0; i < CaptchaLength; i++)
-			{
-				if (_captchaList[i] == _captchaList[(i + 1) % CaptchaLength])
-				{
-					_sum += _captchaList[i];
-				}
-			}
-			return _sum;
-		}
-
-
-		public int Calculate2()
-		{
-			var step = CaptchaLength/ 2;
-
-			for (var i = 0; i < CaptchaLength; i++)
-			{
-				if (_captchaList[i] == _captchaList[(i + step) % CaptchaLength])
-				{
-					_sum += _captchaList[i];
-				}
-			}
-			return _sum;
-		}
 	}
 }
