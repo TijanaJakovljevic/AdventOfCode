@@ -1,12 +1,11 @@
 using System.Collections.Generic;
-using System.Linq;
 using CorruptionChecksum;
 using FluentAssertions;
 using Xunit;
 
 namespace CorruptionChecksumTests
 {
-	public class UnitTest1
+	public class RowTests
 	{
 		[Theory]
 		[MemberData(nameof(RowExamples))]
