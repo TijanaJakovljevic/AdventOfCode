@@ -11,9 +11,7 @@ namespace CorruptionChecksumTests
 		[MemberData(nameof(RowExamples))]
 		public void CalculateRowMinMaxDifference(List<int> row, int expected)
 		{
-			var range = row.CalculateRange();
-
-			var difference = range.CalculateRowDifference();
+			var difference = row.CalculateRowDifference();
 
 			difference.Should().Be(expected);
 		}

@@ -6,16 +6,12 @@ namespace CorruptionChecksum
 	{
 		public int Min;
 		public int Max;
+		public int Difference => Math.Abs(Max - Min);
 
 		public Range()
 		{
 			Min = 9;
 			Max = 1;
-		}
-
-		public int CalculateRowDifference()
-		{
-			return Math.Abs(Max - Min);
 		}
 	}
 }
