@@ -10,8 +10,8 @@ namespace CorruptionChecksum
 
 		public Range()
 		{
-			Min = 9;
-			Max = 1;
+			Min = 9999;
+			Max = 0;
 		}
 	}
 }

@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace CorruptionChecksum
 {
-	public static class Extension
+	public static class Calculator
 	{
 		public static int CalculateRowDifference(this List<int> row)
 		{
