@@ -7,6 +7,7 @@ namespace Captcha
 	{
 		private readonly List<int> _captchaList;
 		private int _sum;
+		public int CaptchaLength => _captchaList.Count;
 
 		public Captcha(string captcha)
 		{
@@ -14,12 +15,23 @@ namespace Captcha
 			_captchaList.Reverse();
 		}
 
+		public int CalculateCaptchaWithEqualityStep(int step)
+		{
+			for (var i = 0; i < CaptchaLength; i++)
+			{
+				if (_captchaList[i] == _captchaList[(i + step) % CaptchaLength])
+				{
+					_sum += _captchaList[i];
+				}
+			}
+			return _sum;
+		}
+
 		public int Calculate1()
 		{
-			var count = _captchaList.Count;
-			for (var i = 0; i < count; i++)
+			for (var i = 0; i < CaptchaLength; i++)
 			{
-				if (_captchaList[i] == _captchaList[(i + 1) % count])
+				if (_captchaList[i] == _captchaList[(i + 1) % CaptchaLength])
 				{
 					_sum += _captchaList[i];
 				}
@@ -30,15 +42,11 @@ namespace Captcha
 
 		public int Calculate2()
 		{
-			var count = _captchaList.Count;
-			var step = count / 2;
+			var step = CaptchaLength/ 2;
 
-			for (var i = 0; i < count; i++)
+			for (var i = 0; i < CaptchaLength; i++)
 			{
-				var a = _captchaList[i];
-				var b = (i + step) % count;
-				var c = _captchaList[(i + step) % count];
-				if (_captchaList[i] == _captchaList[(i + step) % count])
+				if (_captchaList[i] == _captchaList[(i + step) % CaptchaLength])
 				{
 					_sum += _captchaList[i];
 				}

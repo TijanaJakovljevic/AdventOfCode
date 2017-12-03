@@ -7,28 +7,29 @@ namespace CaptchaTests
 	public class CaptchaTests
 	{
 		[Theory]
-		[MemberData(nameof(CaptchaExamples1))]
-		public void FirstCaptchaTest(string input, int expected)
+		[MemberData(nameof(CaptchaWithMatchingStepOne))]
+		public void CaptchaWithMatchingStepOne(string input, int expected)
 		{
 			var captcha = new Captcha.Captcha(input);
 
-			var result = captcha.Calculate1();
+			var result = captcha.CalculateCaptchaWithEqualityStep(1);
 
 			result.Should().Be(expected);
 		}
 
 		[Theory]
-		[MemberData(nameof(CaptchaExamples2))]
-		public void FirstCaptchaTest2(string input, int expected)
+		[MemberData(nameof(CaptchaWithMatchingStepOfHalfOfLength))]
+		public void CaptchaWithMatchingStepOfHalfOfLength(string input, int expected)
 		{
 			var captcha = new Captcha.Captcha(input);
+			var step = captcha.CaptchaLength / 2;
 
-			var result = captcha.Calculate2();
+			var result = captcha.CalculateCaptchaWithEqualityStep(step);
 
 			result.Should().Be(expected);
 		}
 
-		public static IEnumerable<object[]> CaptchaExamples1()
+		public static IEnumerable<object[]> CaptchaWithMatchingStepOne()
 		{
 			yield return new object[] { "1122", 3 };
 			yield return new object[] { "1111", 4 };
@@ -41,7 +42,7 @@ namespace CaptchaTests
 			};
 		}
 
-		public static IEnumerable<object[]> CaptchaExamples2()
+		public static IEnumerable<object[]> CaptchaWithMatchingStepOfHalfOfLength()
 		{
 			yield return new object[] { "1212", 6 };
 			yield return new object[] { "1221", 0 };
